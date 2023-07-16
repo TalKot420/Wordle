@@ -31,7 +31,7 @@ const keys = [
     'M',
     'DEL',
 ];
-
+const messageDisplay = document.querySelector('.message-container')
 // Choose a dictionary to use
 const dictionary = realDictionary;
 
@@ -42,7 +42,9 @@ const state = {
     currentRow: 0, // Current row in the grid
     currentCol: 0, // Current column in the grid
     usedLetters: Array(24), // Array to keep track of used letters
+    disable:0,
 };
+
 
 // Function to update the grid on the screen
 function updateGrid() {
@@ -80,7 +82,7 @@ function drawGrid(container) {
 const registerKeyboardEvents = () => {
     document.body.onkeyup = (e) => {
         const key = e.key;
-        checkInput(e.key);
+        if (state.disable === 0) {checkInput(e.key);}
     };
 };
 
@@ -95,7 +97,7 @@ function checkInput(key) {
                 state.currentRow++;
                 state.currentCol = 0;
             } else {
-                alert("Not a valid word");
+                showMessage("Not a valid word");
             }
         } else if (state.currentCol <= 5) {
             return false;
@@ -166,9 +168,11 @@ function revealWord(guess) {
 
     setTimeout(() => {
         if (isWinner) {
-            alert('Congratulations!');
+            showMessage("Magnificent !!!")
+            state.disable++
         } else if (isGameOver) {
-            alert(`Better luck next time! The word was ${state.secret}.`);
+            showMessage(`Better luck next time! The word was : ${state.secret.toUpperCase()}.`);
+            state.disable++
         }
         updateKeys(guess);
     }, 3 * animation_duration);
@@ -241,6 +245,14 @@ function createRows(container) {
     createRowButtons(1, 9, 10, rows[1]);
     createRowButtons(2, 9, 19, rows[2]);
 }
+//Function in order to show a message
+function showMessage(msg){
+    const messageElement = document.createElement('p')
+    messageElement.textContent = msg
+    messageDisplay.append(messageElement)
+    setTimeout(() => messageDisplay.removeChild(messageElement),2000)
+
+}
 
 // Function to create buttons in a row of the keyboard
 function createRowButtons(rowNum, numOfKeys, index, container) {
@@ -257,7 +269,7 @@ function createRowButtons(rowNum, numOfKeys, index, container) {
 // Function to handle the click event on a key button
 const handleClick = (key) => {
     console.log('clicked virtual ', `${key}`);
-    checkInput(key);
+    if (state.disable === 0) {checkInput(key)};
 };
 
 // Start the game

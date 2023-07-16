@@ -41,7 +41,7 @@ margin-bottom: 2.5rem;
   display: grid;
   grid-template-rows: repeat(6, auto);
   grid-template-columns: repeat(5, auto);
-  margin-top: 45px;
+  margin-top: 35px;
 }
 
 .box {
@@ -114,6 +114,20 @@ margin-bottom: 2.5rem;
 }
 
 
+.message-container{
+  height: 50px;
+  margin-top: 5px;
+}
+
+
+.message-container p{
+  background: #818384;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0px;  
+}
+
+
 
 .keyboard{
 
@@ -170,7 +184,7 @@ margin-bottom: 2.5rem;
     100% { opacity: 1; }
   }
 
-@media (max-width:525px){
+@media (max-width:545px){
   .keyboard-button{
     width: 40px;
     height: 55px;
@@ -185,7 +199,7 @@ margin-bottom: 2.5rem;
 
 
 
-@media (max-width:475px){
+@media (max-width:499px){
   .keyboard-button{
     width: 35px;
     height: 51px;
