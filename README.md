@@ -1,8 +1,6 @@
-# Wordle
+# Wordle - Word Guessing Game Repository
 
-
-Word Guessing Game Repository.
-I really love the word guessing game "Wordle" and play it every at the New York Times website so i
+I really love the word guessing game "Wordle" and play it every גשט at the New York Times website so 
 thought why not try to clone it :)
 
 #
